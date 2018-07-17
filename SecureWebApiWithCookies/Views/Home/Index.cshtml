@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Secure a Web Api in ASP.NET Core using Cookies Sample project</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>This is a sample project for the blog post Secure a Web Api in ASP.NET Core using Cookies.</p>
+
+        <p>The companion Angular project expects the Web Api to be running on port 8080 (you can change this in Program.cs)</p>        
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <p>The following endpoints are available:</p>
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">api/account/register </h4>
+                <span class="list-group-item-text">POST with <em>email</em> and <em>password</em> in the request's body</span>                
+            </li>
+            <li class="list-group-item">                
+                <h4>api/account/login </h4>
+                <span class="list-group-item-text">POST with parameters email and password in the requests body</span>
+            </li>
+            <li class="list-group-item">
+                <h4>api/account/logout </h4>
+                <span class="list-group-item-text">POST with no parameters</span>                
+            </li>
+            <li class="list-group-item">
+                <h4>api/user/name</h4>
+                <span class="list-group-item-text">GET returns a string with the logged in user's email</span>                
+            </li>            
+        </ul>
+    </div>
+</div>

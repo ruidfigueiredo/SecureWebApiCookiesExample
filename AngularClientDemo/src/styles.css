@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+}
+
+input {
+    padding: 5px;
+    font-size: 1.1rem;
+}
+
+fieldset div {
+    margin: 5px;
+}
+
+button {
+    font-size: 1.2rem;
+}
+
+.margin-top-bottom {
+    margin: 10px 0;
+}
