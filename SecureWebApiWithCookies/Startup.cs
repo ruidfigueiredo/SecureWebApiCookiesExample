@@ -62,7 +62,13 @@ namespace SecureWebApiWithCookies
 
             services.AddCors();
 
-            services.AddMvc();
+            services.AddMvc(options => {
+                options.Filters.Add(new ValidateAntiForgeryTokenAttribute());
+            });
+
+            services.AddAntiforgery(antiforgeryOptions => {
+                antiforgeryOptions.HeaderName = "X-XSRF-TOKEN";
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

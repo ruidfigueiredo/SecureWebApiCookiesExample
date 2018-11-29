@@ -18,6 +18,7 @@ namespace SecureWebApiWithCookies.Controllers
         }
 
         [HttpPost]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Register(RegisterRequest registerRequest)
         {
             var newUser = new IdentityUser(registerRequest.Email)
@@ -36,6 +37,7 @@ namespace SecureWebApiWithCookies.Controllers
         }
 
         [HttpPost]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Login(LoginRequest loginRequest)
         {
             var user = await _userManager.FindByEmailAsync(loginRequest.Email);

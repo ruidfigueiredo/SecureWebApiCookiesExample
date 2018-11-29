@@ -10,6 +10,7 @@ namespace SecureWebApiWithCookies.Controllers
 {
     public class HomeController : Controller
     {
+        [IgnoreAntiforgeryToken]
         public IActionResult Index()
         {
             return View();
@@ -17,6 +18,7 @@ namespace SecureWebApiWithCookies.Controllers
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [IgnoreAntiforgeryToken]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

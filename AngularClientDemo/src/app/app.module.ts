@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
 import { AccountService } from './account.service';
-import { WithCredentialsInterceptorService } from './with-credentials-interceptor.service';
+import { AddCsrfHeaderInterceptorService } from './add-csrf-header-interceptor.service';
+import { AppComponent } from './app.component';
 import { UserService } from './user.service';
+import { WithCredentialsInterceptorService } from './with-credentials-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserService } from './user.service';
   providers: [
     AccountService,
     UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: WithCredentialsInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: WithCredentialsInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AddCsrfHeaderInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

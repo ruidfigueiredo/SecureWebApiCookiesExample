@@ -8,8 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'the demo Angular client for Secure an ASP.NET Core Web Api with Cookies';
+export class AppComponent {  
   registerFeedback: string = '';
   loginFeedback: string = '';
   loggedInUserEmail: string = '';
