@@ -42,13 +42,13 @@ namespace SecureWebApiWithCookies
                 options.Password.RequiredUniqueChars = 1;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;                
+                options.Password.RequireUppercase = false;
             });
-                    
+
             services.ConfigureApplicationCookie(cookieOptions =>
             {
-                cookieOptions.Cookie.SameSite = SameSiteMode.None; 
-                cookieOptions.Cookie.Name = "auth_cookie";            
+                cookieOptions.Cookie.SameSite = SameSiteMode.Lax;
+                cookieOptions.Cookie.Name = "auth_cookie";
 
                 cookieOptions.Events = new CookieAuthenticationEvents
                 {
@@ -56,17 +56,19 @@ namespace SecureWebApiWithCookies
                     {
                         redirectContext.HttpContext.Response.StatusCode = 401;
                         return Task.CompletedTask;
-                    }                
+                    }
                 };
             });
 
             services.AddCors();
 
-            services.AddMvc(options => {
+            services.AddMvc(options =>
+            {
                 options.Filters.Add(new ValidateAntiForgeryTokenAttribute());
             });
 
-            services.AddAntiforgery(antiforgeryOptions => {
+            services.AddAntiforgery(antiforgeryOptions =>
+            {
                 antiforgeryOptions.HeaderName = "X-XSRF-TOKEN";
             });
         }
@@ -83,14 +85,15 @@ namespace SecureWebApiWithCookies
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseCors(configurePolicy => {
+            app.UseCors(configurePolicy =>
+            {
                 configurePolicy.AllowAnyHeader();
                 configurePolicy.AllowAnyMethod();
                 configurePolicy.AllowAnyOrigin();
                 configurePolicy.AllowCredentials();
             });
 
-            app.UseStaticFiles();            
+            app.UseStaticFiles();
 
             app.UseAuthentication();
 
